@@ -49,5 +49,5 @@ if __name__ == "__main__":
 
 
 
-plotData("blank_02-02.txt")
+plotData("files/blank_02-02.txt")
 
