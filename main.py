@@ -21,6 +21,7 @@ def plotData(filename):
     plt.grid()
     plt.show()
 
+
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Usage: python help.py <filename>")
