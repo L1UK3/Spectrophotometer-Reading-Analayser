@@ -1,10 +1,6 @@
 import matplotlib.pyplot as plt
-import sys
 
-def plotData(filename):
-
-    xLabel = "X-axis"
-    yLabel = "Y-axis"
+def retrieveData(filename):
 
     with open(filename, "r") as file:
         lines = file.readlines()
@@ -15,39 +11,23 @@ def plotData(filename):
             data = line.split()
 
             if len(data) == 2:
+                print(data)
                 try:
                     x.append(float(data[0]))
                     y.append(float(data[1]))
                 except ValueError:
-                    continue
-
-
-    plt.plot(x, y)
-
-    plt.xlabel(xLabel)
-    plt.ylabel(yLabel)
-    plt.title(filename)
-
-    plt.grid()
-    plt.show()
-
-
-# def validateFile(filename):
-
-# def validateFileName(filename):
-
-
-"""
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python help.py <filename>")
-        sys.exit(1)
-    filename = sys.argv[1] + ".txt"
-    plotData(filename)
-"""
+                    return (x,y)
+                
 
 
 
+x,y = retrieveData("readings/blank_02-02.TXT")
 
-plotData("files/blank_02-02.txt")
+plt.plot(x,y)
+
+plt.grid()
+plt.show()
+
+
+
 
