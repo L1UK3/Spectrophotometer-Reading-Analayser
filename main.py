@@ -16,17 +16,14 @@ def retrieveData(filename):
                     x.append(float(data[0]))
                     y.append(float(data[1]))
                 except ValueError:
-                    return (x,y)
-                
-
-fileName = input()
+                    continue
 
 
-x,y = retrieveData(fileName)
+    plt.plot(x, y)
 
-#"readings/blank_02-02.TXT"
-
-plt.plot(x,y)
+    plt.xlabel(xLabel)
+    plt.ylabel(yLabel)
+    plt.title(filename)
 
 plt.grid()
 plt.show()
