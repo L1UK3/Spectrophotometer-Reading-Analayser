@@ -48,13 +48,6 @@ h1 {
     transition: background-color 0.3s;
 }
 
-/*
-.drop-zone:hover,
-.drop-zone.dragover {
-    background-color: #ffffff;
-}
-*/
-
 .drop-zone p {
     color: #666;
     margin-bottom: 10px;
