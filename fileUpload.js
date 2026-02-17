@@ -1,6 +1,7 @@
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
 const fileInfo = document.getElementById('fileInfo');
+const graphZone = document.getElementById('graphZone');
 
 dropZone.addEventListener('dragover', (e) => {
     e.preventDefault();
@@ -36,6 +37,7 @@ function outputGraph() {
         reader.onload = (event) => {
             const content = event.target.result;
             const lines = content.split('\n');
+            
             const x = [];
             const y = [];
             

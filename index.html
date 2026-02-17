@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spectrophotometer Output Visualiser</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.plot.ly/plotly-3.3.0.min.js" charset="utf-8"></script>
 </head>
 <body>
     <div class="container">
@@ -12,7 +13,7 @@
         
         <div class="content">
             <div class="section">
-                <h2>Upload File</h2>
+                <h3>Upload File</h3>
                 <!-- TODO: #1 File does not upload when using drag and drop-->
                 <div class="drop-zone" id="dropZone">
                     <p>Drag and drop your file here</p>
@@ -24,8 +25,8 @@
             </div>
             
             <div class="section">
-                <h2>Graph Output</h2>
-                <div id="graphContainer">Graph will appear here</div>
+                <h3>Graph Output</h3>
+                <div id="graphZone"></div>
             </div>
         </div>
     </div>
