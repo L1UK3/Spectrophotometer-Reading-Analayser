@@ -21,7 +21,7 @@ def retrieveData(filename):
 
 
 
-x,y = retrieveData("readings/blank_02-02.TXT")
+x,y = retrieveData(input())#"blank_02-02.TXT")
 
 plt.plot(x,y)
 
