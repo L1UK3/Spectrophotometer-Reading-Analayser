@@ -19,6 +19,7 @@ dropZone.addEventListener('drop', (e) => {
 
 fileInput.addEventListener('change', (e) => {
     handleFiles(e.target.files);
+    outputGraph();
 });
 
 function handleFiles(files) {
@@ -27,3 +28,31 @@ function handleFiles(files) {
         fileInfo.innerHTML = `<p><strong>File:</strong> ${file.name}<br><strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB</p>`;
     }
 };
+
+function outputGraph() {
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const content = event.target.result;
+            const lines = content.split('\n');
+            const x = [];
+            const y = [];
+            
+            for (let i = lines.length - 1; i >= 0; i--) {
+                const data = lines[i].trim().split(/\s+/);
+                if (data.length === 2) {
+                    fileInfo.innerHTML += `<p>${lines[i]}</p>`;
+                    try {
+                        x.push(parseFloat(data[0]));
+                        y.push(parseFloat(data[1]));
+                    } catch (error) {
+                        break;
+                    }
+                }
+            }
+        };
+
+        reader.readAsText(file);
+    }
+}
