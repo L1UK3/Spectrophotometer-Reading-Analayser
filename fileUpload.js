@@ -20,6 +20,7 @@ dropZone.addEventListener('drop', (e) => {
 
 fileInput.addEventListener('change', (e) => {
     handleFiles(e.target.files);
+    getData();
     outputGraph();
 });
 
@@ -30,7 +31,7 @@ function handleFiles(files) {
     }
 };
 
-function outputGraph() {
+function getData() {
     const file = fileInput.files[0];
     if (file) {
         const reader = new FileReader();
@@ -58,3 +59,13 @@ function outputGraph() {
         reader.readAsText(file);
     }
 }
+
+function outputGraph() {
+    Plotly.newPlot(graphZone, [{
+        x: x,
+        y: y }], { 
+        margin: { t: 0 } }, {showSendToCloud:true}
+    );
+    
+    console.log( Plotly.BUILD );
+};
