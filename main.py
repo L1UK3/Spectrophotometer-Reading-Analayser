@@ -15,7 +15,6 @@ This file can be imported as a module and contains the following functions:
 - retrieveData: Reads data from a file and returns two lists of x and y values.
 """
 
-
 import matplotlib.pyplot as plt
 
 def retrieveData(filename: str) -> tuple[list[float], list[float]]:
@@ -54,14 +53,8 @@ def retrieveData(filename: str) -> tuple[list[float], list[float]]:
         
         return (x, y)
                 
-
 if __name__ == "__main__":
     coorinates = retrieveData("test.TXT")
     plt.plot(coorinates[0], coorinates[1])
     plt.grid()
     plt.show()
-
-
-
-
-
