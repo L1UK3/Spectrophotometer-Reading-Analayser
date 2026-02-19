@@ -1,3 +1,7 @@
+
+
+// TODO: #3 Document script
+
 const dropZone = document.getElementById('dropZone');
 const fileInput = document.getElementById('fileInput');
 const fileInfo = document.getElementById('fileInfo');
@@ -23,6 +27,8 @@ fileInput.addEventListener('change', (e) => {
     getData();
     outputGraph();
 });
+
+// TODO: #2 Add error handling for file reading and parsing
 
 function handleFiles(files) {
     if (files.length > 0) {
@@ -59,6 +65,8 @@ function getData() {
         reader.readAsText(file);
     }
 }
+
+// TODO: #4 FIx output of graph after file is read and parsed
 
 function outputGraph() {
     Plotly.newPlot(graphZone, [{
