@@ -18,20 +18,15 @@ This file can be imported as a module and contains the following functions:
 import matplotlib.pyplot as plt
 
 def retrieveData(filename: str) -> tuple[list[float], list[float]]:
-    """
-    Opens a file, reads its contents, and extracts x and y values from it. 
+    """Opens a file, reads its contents, and extracts x and y values from it. 
     The function expects each line of the file to contain two numbers 
     (x and y) separated by whitespace. 
     
-    Args:
-        filename (str): 
-            The name of the file to read data from in the active directory.
-
-    Returns:
-        tuple[list[float], list[float]]: 
-            A tuple containing two lists: 
-            the first list contains x values
-            the second list contains y values.
+    :param filename: The name of the file to read data from in the active directory.
+    :type filename: str
+    
+    :returns: A tuple containing two lists of floats: the first list contains x values and the second list contains y values.
+    :rtype: tuple[list[float], list[float]]
     
     """
 
