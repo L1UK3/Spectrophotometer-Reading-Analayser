@@ -2,27 +2,29 @@
 
 // TODO: #3 Document script
 
-const dropZone = document.getElementById('dropZone');
-const fileInput = document.getElementById('fileInput');
-const fileInfo = document.getElementById('fileInfo');
-const graphZone = document.getElementById('graphZone');
+const DROP_ZONE = document.getElementById('dropZone');
+const FILE_INPUT = document.getElementById('fileInput');
+const FILE_INFO = document.getElementById('fileInfo');
+const GRAPH_ZONE = document.getElementById('graphZone');
 
-dropZone.addEventListener('dragover', (e) => {
+
+
+DROP_ZONE.addEventListener('dragover', (e) => {
     e.preventDefault();
-    dropZone.classList.add('dragover');
+    DROP_ZONE.classList.add('dragover');
 });
 
-dropZone.addEventListener('dragleave', () => {
-    dropZone.classList.remove('dragover');
+DROP_ZONE.addEventListener('dragleave', () => {
+    DROP_ZONE.classList.remove('dragover');
 });
 
-dropZone.addEventListener('drop', (e) => {
+DROP_ZONE.addEventListener('drop', (e) => {
     e.preventDefault();
-    dropZone.classList.remove('dragover');
+    DROP_ZONE.classList.remove('dragover');
     handleFiles(e.dataTransfer.files);
 });
 
-fileInput.addEventListener('change', (e) => {
+FILE_INPUT.addEventListener('change', (e) => {
     handleFiles(e.target.files);
     getData();
     outputGraph();
@@ -33,12 +35,12 @@ fileInput.addEventListener('change', (e) => {
 function handleFiles(files) {
     if (files.length > 0) {
         const file = files[0];
-        fileInfo.innerHTML = `<p><strong>File:</strong> ${file.name}<br><strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB</p>`;
+        FILE_INFO.innerHTML = `<p><strong>File:</strong> ${file.name}<br><strong>Size:</strong> ${(file.size / 1024).toFixed(2)} KB</p>`;
     }
 };
 
 function getData() {
-    const file = fileInput.files[0];
+    const file = FILE_INPUT.files[0];
     if (file) {
         const reader = new FileReader();
         reader.onload = (event) => {
@@ -51,7 +53,7 @@ function getData() {
             for (let i = lines.length - 1; i >= 0; i--) {
                 const data = lines[i].trim().split(/\s+/);
                 if (data.length === 2) {
-                    fileInfo.innerHTML += `<p>${lines[i]}</p>`;
+                    FILE_INFO.innerHTML += `<p>${lines[i]}</p>`;
                     try {
                         x.push(parseFloat(data[0]));
                         y.push(parseFloat(data[1]));
@@ -60,20 +62,15 @@ function getData() {
                     }
                 }
             }
+
+            FILE_INFO.dataset.x = JSON.stringify(x);
+            FILE_INFO.dataset.y = JSON.stringify(y);
         };
 
         reader.readAsText(file);
     }
 }
 
-// TODO: #4 FIx output of graph after file is read and parsed
-
 function outputGraph() {
-    Plotly.newPlot(graphZone, [{
-        x: x,
-        y: y }], { 
-        margin: { t: 0 } }, {showSendToCloud:true}
-    );
-    
-    console.log( Plotly.BUILD );
-};
+    pass
+}
